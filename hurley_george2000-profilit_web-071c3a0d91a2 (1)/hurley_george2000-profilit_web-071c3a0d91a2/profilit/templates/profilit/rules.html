@@ -1,0 +1,33 @@
+{% extends 'profilit/base.html' %}
+{% block content %}
+    <div class="content-section">
+        <header class="jumbotron">
+            <h1 class="centre_image display-4" style="color: white; font-family: 'Titillium Web', serif">Rules Based Profiling</h1>
+        </header>
+        <div class="content-section">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <p class="text-muted">No data to select? Upload data
+                        <a href="{% url 'profilit-data' %}">here</a>
+                    </p>
+                    {{ p_form }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" name="rules" type="submit">Begin Profile</button>
+                    {% if files %}
+                        <a href="{% url 'dashboard-rules-overall' %}" class="btn btn-outline-info">Dashboard</a>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+        {% if files %}
+            <div class="content-section">
+                <h2>Error Report</h2>
+                <div class="row">
+                    {% include 'profilit/dataUpload.html' %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock content %}

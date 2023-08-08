@@ -1,0 +1,8 @@
+capvenv
+venv
+db.sqlite3
+profilit/media/profilit/data_files
+profilit/media/profilit/profile_pics
+#profilit_web/settings.py
+.idea
+#profilit_web/settings.py

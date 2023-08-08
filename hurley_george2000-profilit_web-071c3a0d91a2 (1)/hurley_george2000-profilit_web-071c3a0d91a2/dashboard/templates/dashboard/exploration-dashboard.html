@@ -1,0 +1,20 @@
+{% extends 'profilit/base.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+    <head>
+        {% load plotly_dash %}
+        {% plotly_header %}
+    </head>
+    <div class="content-section">
+    <header class="jumbotron">
+            <h1 class="centre_image display-4" style="color: white; font-family: 'Titillium Web', serif">Exploration Dashboard</h1>
+    </header>
+    <a href="{% url 'profilit-exploration' %}" class="btn btn-outline-info" style = "margin-bottom: 10px">Back</a>
+    {% if files %}
+        <body>
+            {% plotly_direct name='ExplorationDashboard'%}
+        </body>
+        {% plotly_footer %}
+    {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'profilit/base.html' %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+    <head>
+        {% load plotly_dash %}
+        {% plotly_header %}
+    </head>
+    <div class="content-section">
+        <header class="jumbotron" style="margin-bottom: 10px ">
+            <h1 class="centre_image display-15" style="color: white; font-family: 'Titillium Web', serif">Data Profiling by Attribute</h1>
+        </header>
+        <a href="{% url 'profilit-rules' %}" class="btn btn-outline-info" style = "margin-bottom: 10px">Back</a>
+        <a href="{% url 'dashboard-rules-overall' %}" class="btn btn-outline-info" style = "margin-bottom: 10px">Overall</a>
+        <a href="{% url 'dashboard-rules-trend' %}" class="btn btn-outline-info" style = "margin-bottom: 10px">Trend Chart</a>
+        {% if files %}
+            <body>
+            {% plotly_direct name='RulesDashboardAttribute' %}
+            </body>
+            {% plotly_footer %}
+        {% else %}
+            <p class = "text-muted">No dashboard visible? Profile some files
+                <a href = "{% url 'profilit-rules' %}"> here </a>
+            </p>
+        {% endif %}
+    </div>
+{% endblock %}

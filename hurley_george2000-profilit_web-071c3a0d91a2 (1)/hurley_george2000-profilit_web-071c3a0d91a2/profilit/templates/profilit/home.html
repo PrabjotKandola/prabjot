@@ -1,0 +1,104 @@
+{% extends 'profilit/base.html' %}
+
+{% block content %}
+    <style>
+        .jumbotron {
+            background-color: lightblue;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            border: 1px solid lightblue;
+            border-radius: 0.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .card-header {
+            background-color: lightblue;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .card-body {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 10px;
+            margin-bottom: 1rem;
+            color:black;
+        }
+
+        .btn {
+            background-color: lightblue;
+            color: white;
+            border-color: lightblue;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border-radius: 1rem;
+
+        }
+
+        .btn:hover {
+            background-color: white;
+            color: lightblue;
+        }
+    </style>
+
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to PROFILit!</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">Data Exploration  <h2 class="card-title"> (i) Input a data file to find out features of your files.</h2> </div>
+                    <div class="card-body">
+
+                        <a href="{% url 'profilit-exploration' %}" class="btn btn-primary btn-sm mx-auto">Explore</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">Rules Based Profiling</div>
+                    <div class="card-body">
+                        <h2 class="card-title">There are 25 types of built-in data quality rules which can be used to profile any dataset provided through the use of metadata.</h2>
+                        <a href="{% url 'profilit-rules' %}" class="btn btn-primary btn-sm mx-auto">Rules</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">Data Transformation</div>
+                    <div class="card-body">
+                        <h2 class="card-title">There are 13 types of built-in transformation rules which can be used to enhance any dataset provided, including shift cipher encryption and decryption.</h2>
+                        <a href="{% url 'profilit-transform' %}" class="btn btn-primary btn-sm mx-auto">Transform</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">Algorithmic Data Matching</div>
+                    <div class="card-body">
+                        <h2 class="card-title">Any number of columns can be used to identify potential keys between two provided datasets through the use of the fuzzy matching algorithm.</h2>
+                        <a href="{% url 'profilit-match' %}" class="btn btn-primary btn-sm mx-auto">Match</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

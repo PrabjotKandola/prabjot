@@ -1,0 +1,144 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="{% static 'profilit/images/favicon.ico' %}" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>PROFILit</title>
+
+    <style>
+        /* Custom CSS styles for navigation */
+        .navbar {
+            background-color: #007bff;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .navbar .navbar-brand img {
+            height: 30px;
+        }
+
+        .navbar .navbar-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .nav-item {
+            margin-right: 15px;
+        }
+
+        .navbar .nav-link {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .navbar .nav-link:hover {
+            color: #fff;
+        }
+
+        /* Custom CSS styles for footer */
+        .page-footer {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        .page-footer h5 {
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .page-footer a {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'profilit-home' %}">
+        <img src="{% static 'profilit/images/capgemini_logo_I&D.jpg' %}" class="img-fluid" alt="Capgemini logo">
+      </a>
+      <ul class="navbar-nav">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profilit-home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profilit-data' %}">Data Upload</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profilit-exploration' %}">Exploration</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profilit-rules' %}">Rules</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profilit-transform' %}">Transform</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profilit-match' %}">Match</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profilit-about' %}">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% block content %}{% endblock %}
+  </div>
+
+  <footer class="page-footer pt-4">
+    <ul class="list-unstyled list-inline text-center py-2">
+      <li class="list-inline-item">
+        <h5 class="mb-1">Want to get started? Upload your data</h5>
+      </li>
+      <li class="list-inline-item">
+        <a href="{% url 'profilit-data' %}" class="btn btn-outline-secondary btn-rounded">Here</a>
+      </li>
+    </ul>
+    <div class="text-center py-3">
+      &copy; 2020 <a href="https://www.capgemini.com/gb-en/">capgemini.com</a>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

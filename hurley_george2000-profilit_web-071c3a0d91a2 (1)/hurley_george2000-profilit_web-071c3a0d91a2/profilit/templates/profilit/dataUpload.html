@@ -1,0 +1,55 @@
+{% for file in files %}
+                        <div class = "col-lg-4 col-md-6">
+                            <div class = "card text-center border-0">
+                                <div class="card-body">
+                                    <a class="card-title" href="{{ file.file.url }}">
+                                        <div class="media centre_image">
+                                            <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-file-earmark-spreadsheet-fill" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M2 3a2 2 0 0 1 2-2h5.293a1 1 0 0 1 .707.293L13.707 5a1 1 0 0 1 .293.707V13a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3zm7 2V2l4 4h-3a1 1 0 0 1-1-1zM3 8v1h2v2H3v1h2v2h1v-2h3v2h1v-2h3v-1h-3V9h3V8H3zm3 3V9h3v2H6z"/>
+                                            </svg>
+                                        </div>
+                                        <div class = "text-truncate">{{ file.filename }}</div>
+                                    </a>
+
+                                </div>
+
+                                <div class="card-footer">
+                                    <small class="text-muted">{{ file.date_created }} </small>
+                                    <button type="button" class = "btn btn-outline-danger float-md-right"
+                                            data-toggle="modal"
+                                            data-target="#deleteModal-{{ file.pk }}" >Delete
+                                    </button>
+                                </div>
+
+                                <div class="modal fade" id="deleteModal-{{ file.pk }}" tabindex="-1"
+                                     role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">File Deletion</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to delete this file?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form method="post" name="delete_form">
+                                                    {% csrf_token %}
+                                                    <input class = "btn btn-outline-danger float-md-right" type="hidden"
+                                                           name='primary_key' value='{{ file.pk }}'>
+                                                    <input class = "btn btn-danger float-md-right" type="submit"
+                                                           name="delete" value="Yes">
+                                                </form>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}

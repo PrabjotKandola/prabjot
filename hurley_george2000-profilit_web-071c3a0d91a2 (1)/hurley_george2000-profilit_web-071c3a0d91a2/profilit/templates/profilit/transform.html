@@ -1,0 +1,31 @@
+{% extends 'profilit/base.html' %}
+{% block content %}
+    <div class="content-section">
+        <header class="jumbotron">
+            <h1 class="centre_image display-4" style="color: white; font-family: 'Titillium Web', serif">Transforming your Dataset</h1>
+        </header>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <p class="text-muted">No data to select? Upload data
+                    <a href="{% url 'profilit-data' %}">here</a>
+                </p>
+                {{ t_form }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" name="transform" type="submit">Begin Transformation</button>
+                {% if files %}
+                    <a href="#" class="btn btn-outline-info">Dashboard</a>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+    {% if files %}
+        <div class="content-section">
+            <h2>Transformed Dataset</h2>
+            <div class="row">
+                {% include 'profilit/dataUpload.html' %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock content %}

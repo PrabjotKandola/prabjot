@@ -1,0 +1,34 @@
+{% extends 'profilit/base.html' %}
+
+{% block content %}
+    <div class="content-section">
+        <header class="jumbotron bg-primary">
+            <h1 class="text-center text-white display-4">Exploration</h1>
+        </header>
+        <div class="content-section">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <p class="text-muted">No data to select? Upload data
+                        <a href="{% url 'profilit-data' %}" class="text-info">here</a>
+                    </p>
+                    {{ e_form }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" name="explore" type="submit">Begin Exploration</button>
+                    {% if files %}
+                        <a href="{% url 'dashboard-exploration' %}" class="btn btn-outline-info">Dashboard</a>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+        {% if files %}
+            <div class="content-section">
+                <h2 class="text-primary">Exploration Outputs</h2>
+                <div class="row">
+                    {% include 'profilit/dataUpload.html' %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock content %}

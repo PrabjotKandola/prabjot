@@ -1,0 +1,23 @@
+{% extends 'profilit/base.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% block content %}
+    <head>
+        {% load plotly_dash %}
+        {% plotly_header %}
+    </head>
+    <div class="content-section">
+        <header class="jumbotron" style="margin-bottom: 10px ">
+            <h1 class="centre_image display-15" style="color: white; font-family: 'Titillium Web', serif">Venn Diagram for Data Matching</h1>
+        </header>
+    <a href="{% url 'profilit-match' %}" class="btn btn-outline-info" style = "margin-bottom: 10px">Back</a>
+    {% if files %}
+        <body>
+                {% plotly_direct name='MatchDashboard'%}
+        </body>
+        {% plotly_footer %}
+    {% endif %}
+    </div>
+
+
+{% endblock %}

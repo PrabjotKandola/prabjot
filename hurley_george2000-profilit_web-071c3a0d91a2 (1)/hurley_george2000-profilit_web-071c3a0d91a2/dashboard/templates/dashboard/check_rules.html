@@ -1,0 +1,17 @@
+{% extends 'profilit/base.html' %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+    {% load plotly_dash %}
+    <div class="content-section">
+        <header class="jumbotron">
+            <h1 class="centre_image display-4" style="color: white; font-family: 'Titillium Web', serif">Errors in rules</h1>
+        </header>
+        <a href="{% url 'profilit-rules' %}" class="btn btn-outline-info" style = "margin-bottom: 10px">Back</a>
+        {% if files %}
+            <div class="{% plotly_class name='check_rules_table' %} card" style="height: 100%; width: 100%">
+                {% plotly_app name='check_rules_table' ratio=1 %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

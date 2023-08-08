@@ -1,0 +1,39 @@
+{% extends 'profilit/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="content-section" style="background-color: #f1f9fb; padding: 2rem;">
+        <header class="jumbotron" style="background-color: lightblue; color: white; text-align: center; padding: 2rem;">
+            <h1 class="centre_image display-4" style="font-family: 'Titillium Web', serif;">Data</h1>
+        </header>
+        <h2 style="color: lightblue; font-size: 1.5rem; margin-bottom: 1.5rem;">Upload</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <p class="text-muted" style="color: lightblue; font-size: 1rem; margin-bottom: 1rem;">
+                    Download the template package <a href="{% static 'profilit/templates.7z' %}" style="color: lightblue; text-decoration: underline;">here</a>
+                </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ u_form }}
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <button class="btn btn-outline-info btn-block" type="submit" name="upload" style="background-color: lightblue; color: white; border-color: lightblue; font-size: 1rem;">Upload file</button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        {% if url %}
+            <p style="font-size: 1rem;">Uploaded file: <a href="{{ url }}" style="color: lightblue; text-decoration: underline;">{{ url }}</a></p>
+        {% endif %}
+    </div>
+    {% if files %}
+        <div class="content-section" style="background-color: #f1f9fb; padding: 2rem;">
+            <h2 style="color: lightblue; font-size: 1.5rem; margin-bottom: 1.5rem;">Data Files</h2>
+            <div class="row">
+                {% include 'profilit/dataUpload.html' %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends 'profilit/base.html' %}
+{% load static %}
+{% block content %}
+    <header class="jumbotron" style="background-color: #321637;padding-top: 5px;
+    padding-bottom: 5px;">
+      <h1 class="centre_image display-4" style="color: white; font-family: 'Titillium Web', serif">About</h1>
+    </header>
+    <body>
+        <div class ="container-fluid" style="text-align: center">
+            <img src="{% static 'profilit/images/About-page pics/prabjot.jpg' %}" class ="rounded"  alt="Prabjot"
+                                 type="image/jpg" width="210" height="240">
+            <img src="{% static 'profilit/images/About-page pics/kalyan.jpg' %}"  class ="rounded" alt="Arthur"
+                                 type="image/jpg" width="210" height="240">
+            <img src="{% static 'profilit/images/About-page pics/George.jpg' %}" class ="rounded"  alt="George"
+                                 type="image/jpg" width="210" height="240">
+            <img src="{% static 'profilit/images/About-page pics/dec.jpg' %}"  class ="rounded" alt="Dec"
+                                 type="image/jpg" width="210" height="240">
+            <img src="{% static 'profilit/images/About-page pics/abdi.jpg' %}" class ="rounded"  alt="Abdi"
+                                 type="image/jpg" width="210" height="240">
+        </div>
+        <div class ="content-section bg-light">
+    <p class="lead" style = "text-align: center">
+        PROFILit is an 'in-house' data profiling tool developed by the team shown above. Unlike it's rivals, PROFILit can
+        profile data in minutes with descriptive reports allowing you to visualize the quality of your data.
+    </p>
+    <p>
+        The tool began as an application which was later converted to this web application for a number of reasons:
+    </p>
+    <ul>
+        <li>
+            Ease of access
+        </li>
+        <li>
+            Improved aesthetics
+        </li>
+        <li>
+            Additional functionality such as the ability to add and delete files within the app.
+        </li>
+    </ul>
+        </div>
+    </body>
+{% endblock content %}
