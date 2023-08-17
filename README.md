@@ -1,8 +1,36 @@
-<H1> How to run this project </H1>
 
-<p> 1. Clone and download a copy of this onto your computer </p>
+# PROFILit
 
-<p> 2. Go cmd / console of the python community edition and 'cd' into the file location of the project where manage.py is stored - So the command would be the following 'cd hurley_george2000-profilit_web-071c3a0d91a2' - Then to run the file , type the
-  command - 'python manage.py runserver' </p>
+## Installation
 
-<p> 3. You will then see this within  http://127.0.0.1:8000/ </p>
+Install [Git for Windows]('http://git-for-windows.github.io/') 
+
+Clone the repository
+
+```bash
+git clone https://github.com/PrabjotKandola/prabjot.git 
+
+```
+Navigate into the cloned repository's directory and create a virtual environment
+
+```bash
+cd repository
+python -m venv venv
+source venv\Scripts\activate
+
+```
+
+Install Dependencies 
+```bash
+pip install -r requirements.txt
+```
+
+Run the Development Server:
+
+```bash
+python manage.py runserver 
+
+```
+The server will start and you can access the app by visiting http://127.0.0.1:8000/ in your web browser. 
+
+
