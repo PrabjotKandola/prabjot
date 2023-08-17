@@ -3,7 +3,7 @@
 
 ## Installation
 
-Install [Git for Windows]('http://git-for-windows.github.io/') 
+Install [Git for Windows](http://git-for-windows.github.io/)
 
 Clone the repository
 
